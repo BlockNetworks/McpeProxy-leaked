@@ -203,8 +203,45 @@ class Debug extends Plugin {
 		} elseif ($packet instanceof ClientToServerHandshakePacket) {
 			var_dump("Packet: ClientToServerHandshakePacket");
 			// nothing in packet
-			// TODO: add more packets
+		} elseif ($packet instanceof DisconnectPacket) {
+			var_dump("Packet: DisconnectPacket");
+			if ($packet->hideDisconnectionScreen) {
+				var_dump("hideDisconnectionScreen: True");
+			} else {
+				var_dump("hideDisconnectionScreen: False");
+			}
+			var_dump("Message: " . $packet->message);
+		} elseif ($packet instanceof ResourcePacksInfoPacket) {
+			var_dump("Packet: ResourcePacksInfoPacket");
+			if ($packet->mustAccept) {
+				var_dump("mustAccept: True");
+			} else {
+				var_dump("mustAccept: False");
+			}
+			if ($packet->hasScripts) {
+				var_dump("hasScripts: True");
+			} else {
+				var_dump("hasScripts: False");
+			}
+			var_dump("behaviorPackEntries: " . $packet->behaviorPackEntries);
+			var_dump("resourcePackEntries: " . $packet->resourcePackEntries);
+		} elseif ($packet instanceof ResourcePackStackPacket) {
+			var_dump("Packet: ResourcePackStackPacket");
+			if ($packet->mustAccept) {
+				var_dump("mustAccept: True");
+			} else {
+				var_dump("mustAccept: False");
+			}
+			var_dump("behaviorPackStack: " . $packet->behaviorPackStack);
+			var_dump("resourcePackStack: " . $packet->resourcePackStack);
+			var_dump("baseGameVersion: " . $packet->baseGameVersion);
+			var_dump("experiments: " . $packet->experiments);
+		} elseif ($packet instanceof ResourcePackClientResponsePacket) {
+			var_dump("Packet: ResourcePackClientResponsePacket");
+			var_dump("status: " . $packet->status);
+			var_dump("packIds: " . $packet->packIds);
 		} elseif ($packet instanceof TextPacket) {
+			var_dump("Packet: TextPacket");
 			var_dump("Type: " . $packet->type);
 			if ($packet->needsTranslation) {
 				var_dump("NeedsTranslation: True");
@@ -216,6 +253,228 @@ class Debug extends Plugin {
 			var_dump("Parameters: " . $packet->parameters);
 			var_dump("xboxUserId: " . $packet->xboxUserId);
 			var_dump("platformChatId: " . $packet->platformChatId);
+		} elseif ($packet instanceof SetTimePacket) {
+			var_dump("Packet: SetTimePacket");
+			var_dump("time: " . $packet->time);
+		} elseif ($packet instanceof StartGamePacket) {
+			var_dump("Packet: StartGamePacket");
+			var_dump("entityUniqueId: " . $packet->entityUniqueId);
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("playerGamemode: " . $packet->playerGamemode);
+			var_dump("playerPosition: " . $packet->playerPosition);
+			var_dump("pitch: " . $packet->pitch);
+			var_dump("yaw: " . $packet->yaw);
+			var_dump("seed: " . $packet->seed);
+			var_dump("spawnSettings: " . $packet->spawnSettings);
+			var_dump("generator: " . $packet->generator);
+			var_dump("worldGamemode: " . $packet->worldGamemode);
+			var_dump("difficulty: " . $packet->difficulty);
+			var_dump("spawnX: " . $packet->spawnX);
+			var_dump("spawnY: " . $packet->spawnY);
+			var_dump("spawnZ: " . $packet->spawnZ);
+			if ($packet->hasAchievementsDisabled) {
+				var_dump("hasAchievementsDisabled: True");
+			} else {
+				var_dump("hasAchievementsDisabled: False");
+			}
+			var_dump("time: " . $packet->time);
+			var_dump("eduEditionOffer: " . $packet->eduEditionOffer);
+			if ($packet->hasEduFeaturesEnabled) {
+				var_dump("hasEduFeaturesEnabled: True");
+			} else {
+				var_dump("hasEduFeaturesEnabled: False");
+			}
+			var_dump("eduProductUUID: " . $packet->eduProductUUID);
+			var_dump("rainLevel: " . $packet->rainLevel);
+			var_dump("lightningLevel: " . $packet->lightningLevel);
+			if ($packet->hasConfirmedPlatformLockedContent) {
+				var_dump("hasConfirmedPlatformLockedContent: True");
+			} else {
+				var_dump("hasConfirmedPlatformLockedContent: False");
+			}
+			if ($packet->isMultiplayerGame) {
+				var_dump("isMultiplayerGame: True");
+			} else {
+				var_dump("isMultiplayerGame: False");
+			}
+			if ($packet->hasLANBroadcast) {
+				var_dump("hasLANBroadcast: True");
+			} else {
+				var_dump("hasLANBroadcast: False");
+			}
+			var_dump("xboxLiveBroadcastMode: " . $packet->xboxLiveBroadcastMode);
+			var_dump("platformBroadcastMode: " . $packet->platformBroadcastMode);
+			if ($packet->commandsEnabled) {
+				var_dump("commandsEnabled: True");
+			} else {
+				var_dump("commandsEnabled: False");
+			}
+			if ($packet->isTexturePacksRequired) {
+				var_dump("isTexturePacksRequired: True");
+			} else {
+				var_dump("isTexturePacksRequired: False");
+			}
+			var_dump("gameRules: " . $packet->gameRules);
+			var_dump("experiments: " . $packet->experiments);
+			if ($packet->hasBonusChestEnabled) {
+				var_dump("hasBonusChestEnabled: True");
+			} else {
+				var_dump("hasBonusChestEnabled: False");
+			}
+			if ($packet->hasStartWithMapEnabled) {
+				var_dump("hasStartWithMapEnabled: True");
+			} else {
+				var_dump("hasStartWithMapEnabled: False");
+			}
+			var_dump("defaultPlayerPermission: " . $packet->defaultPlayerPermission);
+			var_dump("serverChunkTickRadius: " . $packet->serverChunkTickRadius);
+			if ($packet->hasLockedBehaviorPack) {
+				var_dump("hasLockedBehaviorPack: True");
+			} else {
+				var_dump("hasLockedBehaviorPack: False");
+			}
+			if ($packet->hasLockedResourcePack) {
+				var_dump("hasLockedResourcePack: True");
+			} else {
+				var_dump("hasLockedResourcePack: False");
+			}
+			if ($packet->isFromLockedWorldTemplate) {
+				var_dump("isFromLockedWorldTemplate: True");
+			} else {
+				var_dump("isFromLockedWorldTemplate: False");
+			}
+			if ($packet->useMsaGamertagsOnly) {
+				var_dump("useMsaGamertagsOnly: True");
+			} else {
+				var_dump("useMsaGamertagsOnly: False");
+			}
+			if ($packet->isFromWorldTemplate) {
+				var_dump("isFromWorldTemplate: True");
+			} else {
+				var_dump("isFromWorldTemplate: False");
+			}
+			if ($packet->isWorldTemplateOptionLocked) {
+				var_dump("isWorldTemplateOptionLocked: True");
+			} else {
+				var_dump("isWorldTemplateOptionLocked: False");
+			}
+			if ($packet->onlySpawnV1Villagers) {
+				var_dump("onlySpawnV1Villagers: True");
+			} else {
+				var_dump("onlySpawnV1Villagers: False");
+			}
+			var_dump("vanillaVersion: " . $packet->vanillaVersion);
+			var_dump("limitedWorldWidth: " . $packet->limitedWorldWidth);
+			var_dump("limitedWorldLength: " . $packet->limitedWorldLength);
+			if ($packet->isNewNether) {
+				var_dump("isNewNether: True");
+			} else {
+				var_dump("isNewNether: False");
+			}
+			var_dump("experimentalGameplayOverride: " . $packet->experimentalGameplayOverride);
+			var_dump("levelId: " . $packet->levelId);
+			var_dump("worldName: " . $packet->worldName);
+			var_dump("premiumWorldTemplateId: " . $packet->premiumWorldTemplateId);
+			if ($packet->isTrial) {
+				var_dump("isTrial: True");
+			} else {
+				var_dump("isTrial: False");
+			}
+			var_dump("playerMovementType: " . $packet->playerMovementType);
+			var_dump("currentTick: " . $packet->currentTick);
+			var_dump("enchantmentSeed: " . $packet->enchantmentSeed);
+			var_dump("multiplayerCorrelationId: " . $packet->multiplayerCorrelationId);
+			var_dump("blockPalette: " . $packet->blockPalette);
+			var_dump("itemTable: " . $packet->itemTable);
+			if ($packet->enableNewInventorySystem) {
+				var_dump("enableNewInventorySystem: True");
+			} else {
+				var_dump("enableNewInventorySystem: False");
+			}
+		} elseif ($packet instanceof AddPlayerPacket) {
+			var_dump("Packet: AddPlayerPacket");
+			var_dump("uuid: " . $packet->uuid);
+			var_dump("username: " . $packet->username);
+			var_dump("entityUniqueId: " . $packet->entityUniqueId);
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("platformChatId: " . $packet->platformChatId);
+			var_dump("position: " . $packet->position);
+			var_dump("motion: " . $packet->motion);
+			var_dump("pitch: " . $packet->pitch);
+			var_dump("yaw: " . $packet->yaw);
+			var_dump("headYaw: " . $packet->headYaw);
+			var_dump("item: " . $packet->item);
+			var_dump("metadata: " . $packet->metadata);
+			var_dump("uvarint1: " . $packet->uvarint1);
+			var_dump("uvarint2: " . $packet->uvarint2);
+			var_dump("uvarint3: " . $packet->uvarint3);
+			var_dump("uvarint4: " . $packet->uvarint4);
+			var_dump("uvarint5: " . $packet->uvarint5);
+			var_dump("long1: " . $packet->long1);
+			var_dump("links: " . $packet->links);
+			var_dump("deviceId: " . $packet->deviceId);
+			var_dump("buildPlatform: " . $packet->buildPlatform);
+		} elseif ($packet instanceof AddActorPacket) {
+			var_dump("Packet: AddActorPacket");
+			var_dump("entityUniqueId: " . $packet->entityUniqueId);
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("type: " . $packet->type);
+			var_dump("position: " . $packet->position);
+			var_dump("motion: " . $packet->motion);
+			var_dump("pitch: " . $packet->pitch);
+			var_dump("yaw: " . $packet->yaw);
+			var_dump("headYaw: " . $packet->headYaw);
+			var_dump("attributes: " . $packet->attributes);
+			var_dump("metadata: " . $packet->metadata);
+			var_dump("links: " . $packet->links);
+		} elseif ($packet instanceof RemoveActorPacket) {
+			var_dump("Packet: RemoveActorPacket");
+			var_dump("entityUniqueId: " . $packet->entityUniqueId);
+		} elseif ($packet instanceof AddItemActorPacket) {
+			var_dump("Packet: AddItemActorPacket");
+			var_dump("entityUniqueId: " . $packet->entityUniqueId);
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("item: " . $packet->item);
+			var_dump("position: " . $packet->position);
+			var_dump("motion: " . $packet->motion);
+			var_dump("metadata: " . $packet->metadata);
+			if ($packet->isFromFishing) {
+				var_dump("isFromFishing: True");
+			} else {
+				var_dump("isFromFishing: False");
+			}
+		} elseif ($packet instanceof TakeItemActorPacket) {
+			var_dump("Packet: TakeItemActorPacket");
+			var_dump("target: " . $packet->target);
+			var_dump("eid: " . $packet->eid);
+		} elseif ($packet instanceof MoveActorAbsolutePacket) {
+			var_dump("Packet: MoveActorAbsolutePacket");
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("flags: " . $packet->flags);
+			var_dump("position: " . $packet->position);
+			var_dump("xRot: " . $packet->xRot);
+			var_dump("yRot: " . $packet->yRot);
+			var_dump("zRot: " . $packet->zRot);
+		} elseif ($packet instanceof MovePlayerPacket) {
+			var_dump("Packet: MovePlayerPacket");
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("position: " . $packet->position);
+			var_dump("pitch: " . $packet->pitch);
+			var_dump("yaw: " . $packet->yaw);
+			var_dump("headYaw: " . $packet->headYaw);
+			var_dump("mode: " . $packet->mode);
+			if ($packet->onGround) {
+				var_dump("onGround: True");
+			} else {
+				var_dump("onGround: False");
+			}
+			var_dump("ridingEid: " . $packet->ridingEid);
+			var_dump("teleportCause: " . $packet->teleportCause);
+			var_dump("teleportItem: " . $packet->teleportItem);
+			var_dump("tick: " . $packet->tick);
+		} elseif ($packet instanceof RiderJumpPacket) {
+			var_dump("Packet: RiderJumpPacket");
+			var_dump("jumpStrength: " . $packet->jumpStrength);
 		}
 		return true;
 	}
