@@ -475,7 +475,104 @@ class Debug extends Plugin {
 		} elseif ($packet instanceof RiderJumpPacket) {
 			var_dump("Packet: RiderJumpPacket");
 			var_dump("jumpStrength: " . $packet->jumpStrength);
-		}
+		} elseif ($packet instanceof UpdateBlockPacket) {
+			var_dump("Packet: UpdateBlockPacket");
+			var_dump("x: " . $packet->x);
+			var_dump("y: " . $packet->y);
+			var_dump("z: " . $packet->z);
+			var_dump("blockRuntimeId: " . $packet->blockRuntimeId);
+			var_dump("flags: " . $packet->flags);
+			var_dump("dataLayerId: " . $packet->dataLayerId);
+		} elseif ($packet instanceof AddPaintingPacket) {
+			var_dump("Packet: AddPaintingPacket");
+			var_dump("entityUniqueId: " . $packet->entityUniqueId);
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("position: " . $packet->position);
+			var_dump("direction: " . $packet->direction);
+			var_dump("title: " . $packet->title);
+		} elseif ($packet instanceof TickSyncPacket) {
+			var_dump("Packet: TickSyncPacket");
+			// all variables in packet are private
+		} elseif ($packet instanceof LevelSoundEventPacketV1) {
+			var_dump("Packet: LevelSoundEventPacketV1");
+			var_dump("sound: " . $packet->sound);
+			var_dump("position: " . $packet->position);
+			var_dump("extraData: " . $packet->extraData);
+			var_dump("entityType: " . $packet->entityType);
+			if ($packet->isBabyMob) {
+				var_dump("isBabyMob: True");
+			} else {
+				var_dump("isBabyMob: False");
+			}
+			if ($packet->disableRelativeVolume) {
+				var_dump("disableRelativeVolume: True");
+			} else {
+				var_dump("disableRelativeVolume: False");
+			}
+		} elseif ($packet instanceof LevelEventPacket) {
+			var_dump("Packet: LevelEventPacket");
+			var_dump("evid: " . $packet->evid);
+			var_dump("position: " . $packet->position);
+			var_dump("data: " . $packet->data);
+		} elseif ($packet instanceof BlockEventPacket) {
+			var_dump("Packet: BlockEventPacket");
+			var_dump("x: " . $packet->x);
+			var_dump("y: " . $packet->y);
+			var_dump("z: " . $packet->z);
+			var_dump("eventType: " . $packet->eventType);
+			var_dump("eventData: " . $packet->eventData);
+		} elseif ($packet instanceof ActorEventPacket) {
+			var_dump("Packet: ActorEventPacket");
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("event: " . $packet->event);
+			var_dump("data: " . $packet->data);
+		} elseif ($packet instanceof MobEffectPacket) {
+			var_dump("Packet: MobEffectPacket");
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("eventId: " . $packet->eventId);
+			var_dump("effectId: " . $packet->effectId);
+			var_dump("amplifier: " . $packet->amplifier);
+			if ($packet->particles) {
+				var_dump("particles: True");
+			} else {
+				var_dump("particles: False");
+			}
+			var_dump("duration: " . $packet->duration);
+		} elseif ($packet instanceof UpdateAttributesPacket) {
+			var_dump("Packet: UpdateAttributesPacket");
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("entries: " . $packet->entries);
+			var_dump("tick: " . $packet->tick);
+		} elseif ($packet instanceof InventoryTransactionPacket) {
+			var_dump("Packet: InventoryTransactionPacket");
+			var_dump("requestId: " . $packet->requestId);
+			var_dump("requestChangedSlots: " . $packet->requestChangedSlots);
+			var_dump("transactionType: " . $packet->transactionType);
+			var_dump("hasItemStackIds: " . $packet->hasItemStackIds);
+			var_dump("actions: " . $packet->actions);
+			var_dump("trData: " . $packet->trData);
+		} elseif ($packet instanceof MobEquipmentPacket) {
+			var_dump("Packet: MobEquipmentPacket");
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("item: " . $packet->item);
+			var_dump("inventorySlot: " . $packet->inventorySlot);
+			var_dump("hotbarSlot: " . $packet->hotbarSlot);
+			var_dump("windowId: " . $packet->windowId);
+		} elseif ($packet instanceof MobArmorEquipmentPacket) {
+			var_dump("Packet: MobArmorEquipmentPacket");
+			var_dump("entityRuntimeId: " . $packet->entityRuntimeId);
+			var_dump("head: " . $packet->head);
+			var_dump("chest: " . $packet->chest);
+			var_dump("legs: " . $packet->legs);
+			var_dump("feet: " . $packet->feet);
+		} elseif ($packet instanceof InteractPacket) {
+			var_dump("Packet: InteractPacket");
+			var_dump("action: " . $packet->action);
+			var_dump("target: " . $packet->target);
+			var_dump("x: " . $packet->x);
+			var_dump("y: " . $packet->y);
+			var_dump("z: " . $packet->z);
+		} // next is BlockPickRequestPacket
 		return true;
 	}
 
